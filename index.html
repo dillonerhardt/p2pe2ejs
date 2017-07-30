@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SafeMsg</title>
+
+    <style>
+        /* Resets */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+        /* General App Styles */
+        #app {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding-bottom: 56px;
+            font-family: sans-serif;
+        }
+        /* Message input */
+        #input {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 15px;
+            background-color: #d0d0d0;
+            display: flex;
+        }
+        #input #messageInput {
+            height: 26px;
+            border: none;
+            border-radius: 2px;
+            padding: 0 10px;
+            flex-grow: 1;
+            font-size: 14px;
+        }
+        #input #send {
+            border: none;
+            background: none;
+            padding-right: 10px;
+            padding-left: 20px;
+            font-size: 14px;
+            color: #2c7bf2;
+            cursor: pointer;
+        }
+        /* User Info */
+        #me {
+            padding: 10px 15px;
+            background-color: #ddd;
+            font-size: 14px;
+            display: flex;
+        }
+        #me #peerId {
+            flex-grow: 1;
+        }
+        #me #addPeer {
+            border: none;
+            background: none;
+            padding-right: 10px;
+            padding-left: 20px;
+            font-size: 14px;
+            color: #2c7bf2;
+            cursor: pointer;
+        }
+        /* Add Peer Popup */
+        #addPeerPopup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+        }
+        #addPeerPopup .box {
+            background-color: white;
+            padding: 20px;
+        }
+        #addPeerPopup .box p {
+            margin-bottom: 10px;
+        }
+        #addPeerPopup .box #addPeerInput {
+            height: 26px;
+            border: 1px solid #aaa;
+            border-radius: 2px;
+            padding: 0 10px;
+            flex-grow: 1;
+            font-size: 14px;
+        }
+        #addPeerPopup .box #addPeerBtn {
+            border: none;
+            background: none;
+            padding-right: 10px;
+            padding-left: 10px;
+            font-size: 14px;
+            color: #2c7bf2;
+            cursor: pointer;
+        }
+        /* Messages */
+        .message {
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+        .message.me {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="me">
+            <div id="peerId">
+                Assigning...
+            </div>
+            <div>
+                <button onclick="showAddPeerPopup();" id="addPeer">
+                    Add Person
+                </button>
+            </div>
+        </div>
+        <div id="input">
+            <input type="text" id="messageInput" placeholder="Message..." />
+            <button id="send" onclick="sendMessage();">Send</button>
+        </div>
+        <div id="addPeerPopup">
+            <div class="box">
+                <div>
+                    <p>Add Person</p>
+                </div>
+                <input type="text" id="addPeerInput" placeholder="Persons connection id" />
+                <button id="addPeerBtn" onclick="addPeer();">Add</button>
+            </div>
+        </div>
+    </div>
+    <script src="rs.min.js"></script>
+     <script src="cryptico.min.js"></script>
+    <script src="peer.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
